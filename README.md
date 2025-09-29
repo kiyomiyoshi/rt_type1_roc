@@ -16,8 +16,7 @@ fitting.
 (or highest-confidence) Yes to fastest-RT (or highest-confidence) No
 responses.  
 `add_constant = TRUE` adds a small value to the response frequency
-vectors primarily for avoiding zero-cell-related issues (default value
-is TRUE).
+vectors primarily for estimation stability (default value is TRUE).
 
 ``` r
 nr_s1 <- c(20,  36, 16, 40, 82, 137)
