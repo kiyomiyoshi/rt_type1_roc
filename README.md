@@ -20,16 +20,16 @@ vectors primarily for avoiding zero-cell-related issues (default value
 is TRUE).
 
 ``` r
-nr_s1 <- c(200,  360, 160, 400, 820, 1370)
-nr_s2 <- c(1970, 420, 120, 170, 300, 320)
+nr_s1 <- c(20,  36, 16, 40, 82, 137)
+nr_s2 <- c(197, 42, 12, 17, 30, 32)
 
 source("uvsdt.R")
 f1 <- fit_uvsdt_mle(nr_s1, nr_s2, add_constant = TRUE)
 f1
-#>         mu    sigma       da     cri.X1   cri.X2    cri.X3    cri.X4   cri.X5
-#> 1 1.959367 1.688484 1.412034 -0.2203341 0.429552 0.7718928 0.9545693 1.546958
+#>         mu    sigma       da     cri.X1    cri.X2    cri.X3    cri.X4   cri.X5
+#> 1 1.950602 1.684445 1.408211 -0.2220643 0.4270594 0.7694734 0.9530994 1.544301
 #>        logL
-#> 1 -9300.643
+#> 1 -933.9624
 ```
 
 ## Files
