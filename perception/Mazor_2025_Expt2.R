@@ -186,3 +186,8 @@ ggplot(df_wide) +
         axis.title.y = element_blank(),
         axis.text.x  = element_text(size = 6),
         axis.text.y  = element_text(size = 6)) -> da_Mazor_2025_Expt2
+
+# exclusion
+length(unique(df$subject_identifier)) # 224
+sum(dp >= 0) # 224
+nrow(df_wide) # 224

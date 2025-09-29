@@ -8,10 +8,8 @@ df_wide_sub <- df_wide[df_wide$id %in% common_ids, ]
 odd_common  <- df_wide_odd[df_wide_odd$id %in% common_ids, ]
 even_common <- df_wide_even[df_wide_even$id %in% common_ids, ]
 
-
 # sigma 
-mean(df_wide$sigma_conf) + 2.5 * sd(df_wide$sigma_conf) #ここまで
-
+mean(df_wide$sigma_conf) + 2.5 * sd(df_wide$sigma_conf)
 
 df_wide_sub <- subset(df_wide_sub, df_wide_sub$sigma_conf <  2.886)
 odd_common  <- subset(odd_common, odd_common$sigma_conf <  2.886)

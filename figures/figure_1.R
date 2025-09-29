@@ -4,6 +4,7 @@ library(grid)
 library(cowplot)
 library(sjPlot)
 
+#'#
 nr_s1 <- c(200,  360, 160, 400, 820, 1370)
 nr_s2 <- c(1970, 420, 120, 170, 300, 320)
 sum(nr_s1)
@@ -24,8 +25,7 @@ phit <- nhit/sum(nr_s2)
 roc <- data.frame(phit, pfa)[-6,]
 
 p1 <- ggplot(roc, aes(x = pfa, y = phit)) + geom_point() +
-  xlim(0,1) + ylim(0,1) + xlab("FA rate") + ylab("Hit rate")
-p1
+  xlim(0, 1) + ylim(0, 1) + xlab("FA rate") + ylab("Hit rate")
 
 #'# auc
 auc <- phit[1]*pfa[1]/2
@@ -107,5 +107,17 @@ p3 <- p1 +
   theme_minimal(base_size = 8)
 p3
 
-ggsave("figure_2a.jpg", p3, width = 2, height = 2, units = "in", dpi = 500)
-ggsave("figure_2b.jpg", p2, width = 2, height = 1.75, units = "in", dpi = 500)
+p4 <- ggplot(roc, aes(x = qnorm(pfa), y = qnorm(phit))) + geom_point() +
+  geom_line(ev_roc, mapping = aes(x = qnorm(ev_far), y = qnorm(ev_hr)), color = "gray", linetype = "dashed") +
+  geom_line(uv_roc, mapping = aes(x = qnorm(uv_far), y = qnorm(uv_hr)), color = "#3b5f8f") +
+  coord_equal() +
+  coord_cartesian(xlim = c(-3, 3), ylim = c(-3, 3)) + 
+  scale_x_continuous(breaks = seq(-3, 3, by = 1)) +
+  scale_y_continuous(breaks = seq(-3, 3, by = 1)) +
+  xlab("z-transformed FA rate") + ylab("z-transformed hit rate") + 
+  theme_minimal(base_size = 8)
+p4
+
+ggsave("figure_1a.jpg", p3, width = 2, height = 2,    units = "in", dpi = 500)
+ggsave("figure_1b.jpg", p4, width = 2, height = 2,    units = "in", dpi = 500)
+ggsave("figure_1c.jpg", p2, width = 2, height = 1.75, units = "in", dpi = 500)

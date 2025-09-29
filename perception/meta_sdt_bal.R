@@ -98,4 +98,3 @@ fit_metad_minus <- function(x0, th, hm, fm) {
   y2 <- pnorm(x0[[1]], x0[[2]], 1) / pnorm(th * x0[[2]], x0[[2]], 1) - fm
   c(y1, y2)
 }
-

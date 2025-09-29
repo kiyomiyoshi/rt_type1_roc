@@ -113,7 +113,6 @@ ggplot(df, aes(x = x, y = density, color = distribution)) +
     axis.text.y = element_text(size = 6)
   ) -> g4
 
-
 # save figures
 range_g3 <- c(-4, 4)
 range_g4 <- c(-5, 5)
@@ -124,7 +123,6 @@ ggsave("g1.jpg", plot = g1, width = 2, height = 2, units = "in", dpi = 500)
 ggsave("g2.jpg", plot = g2, width = 2, height = 0.6, units = "in", dpi = 500)
 ggsave("g3.jpg", plot = g3, width = 2, height = 0.6, units = "in", dpi = 500)
 ggsave("g4.jpg", plot = g4, width = 2 * span_g4 / span_g3, height = 0.48, units = "in", dpi = 500)
-
 
 # sdt measures
 da <- 1/sqrt((1 + 1.5^2)/2)

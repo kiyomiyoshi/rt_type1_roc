@@ -186,3 +186,8 @@ ggplot(df_wide) +
         axis.title.y = element_blank(),
         axis.text.x  = element_text(size = 6),
         axis.text.y  = element_text(size = 6)) -> da_Kantner_2014_E2_Face
+
+# exclusion
+length(unique(df$Subj_idx)) # 74
+sum(dp >= 0) # 73
+nrow(df_wide) # 73

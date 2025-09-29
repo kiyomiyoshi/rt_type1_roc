@@ -170,7 +170,7 @@ p1 <- p1 + theme(plot.margin = margin(5, 5, 5, 5))
 p2 <- p2 + theme(plot.margin = margin(5, 5, 5, 5))
 p3 <- p3 + theme(plot.margin = margin(5, 5, 5, 5))
 
-figure_3 <- cowplot::plot_grid(
+figure_2 <- cowplot::plot_grid(
   p1, p2, p3,
   nrow = 1,
   labels = c("(a)", "(b)", "(c)"),
@@ -180,7 +180,7 @@ figure_3 <- cowplot::plot_grid(
   label_y = c(0.98, 0.98, 0.98)
 )
 
-sjPlot::save_plot("figure_3.png", figure_3, width = 16, height = 4, dpi = 300)
+sjPlot::save_plot("figure_2.png", figure_2, width = 16, height = 4, dpi = 300)
 
 # stats
 # sigma
@@ -243,9 +243,9 @@ da <- ggdraw() +
   draw_label(expression("Confidence-based d"[a]), x = 0.5, y = 0.03, vjust = 0.5, size = 10)
 
 # save figure
-sjPlot::save_plot("figure_4.png", sigma, width = 16, height = 13.6, dpi = 500)
-sjPlot::save_plot("figure_5.png", mu,    width = 16, height = 13.6, dpi = 500)
-sjPlot::save_plot("figure_6.png", da,    width = 16, height = 13.6, dpi = 500)
+sjPlot::save_plot("figure_6.png", sigma, width = 16, height = 13.6, dpi = 500)
+sjPlot::save_plot("figure_7.png", mu,    width = 16, height = 13.6, dpi = 500)
+sjPlot::save_plot("figure_8.png", da,    width = 16, height = 13.6, dpi = 500)
 
 #
 sdt$dataset <- as.factor(sdt$dataset)
@@ -267,6 +267,7 @@ ggplot(sdt, aes(x = var, y = sigma, fill = var)) +
   stat_compare_means(
     comparisons = comparisons_list,
     method = "t.test", 
+    paired = TRUE,
     label = "p.signif",
     size = 3,
     symnum.args = list(
@@ -282,13 +283,24 @@ ggplot(sdt, aes(x = var, y = sigma, fill = var)) +
   labs(x = NULL,
        y = "Estimate of σ") -> g1
 
+sdt %>%
+  group_by(dataset, var) %>%
+  summarise(mean_sigma = mean(sigma)) -> sdt_sigma
+sdt_sigma
+
+sdt_sigma %>%
+  group_by(var) %>%
+  summarise(ave_mean_sigma = mean(mean_sigma),
+            std_mean_sigma = sd(mean_sigma))
+
 #
 ggplot(sdt, aes(x = var, y = mu, fill = var)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.7) +
   geom_jitter(width = 0.15, alpha = 0.1) +
   stat_compare_means(
     comparisons = comparisons_list,
-    method = "t.test", 
+    method = "t.test",
+    paired = TRUE,
     label = "p.signif",
     size = 3,
     symnum.args = list(
@@ -304,10 +316,20 @@ ggplot(sdt, aes(x = var, y = mu, fill = var)) +
   labs(x = NULL,
        y = "Estimate of μ") -> g2
 
+sdt %>%
+  group_by(dataset, var) %>%
+  summarise(mean_mu = mean(mu)) -> sdt_mu
+sdt_mu
+
+sdt_mu %>%
+  group_by(var) %>%
+  summarise(ave_mean_mu = mean(mean_mu),
+            std_mean_mu = sd(mean_mu))
+
 #
 dat1 <- select(sdt, da, dataset, var)
 colnames(dat1) <- c("value", "dataset", "index")
-dat2 <- select(sdt, dp, dataset)
+dat2 <- select(subset(sdt_conf, sdt_conf$dp > 0), dp, dataset)
 dat2$index <- "dp"
 colnames(dat2) <- c("value", "dataset", "index")
 dat3 <- rbind(dat1, dat2)
@@ -328,6 +350,7 @@ ggplot(dat3, aes(x = index, y = value, fill = index)) +
   stat_compare_means(
     comparisons = comparisons_list,
     method = "t.test",
+    paired = TRUE,
     label = "p.signif",
     size = 3,
     step.increase = 0.17,
@@ -345,6 +368,16 @@ ggplot(dat3, aes(x = index, y = value, fill = index)) +
     "dp"         = expression("d'")
   )) -> g3
 
-ggsave("figure_a1.jpg", g1, width = 6.5, height = 5, units = "in", dpi = 500)
-ggsave("figure_a2.jpg", g2, width = 6.5, height = 5, units = "in", dpi = 500)
-ggsave("figure_a3.jpg", g3, width = 6.5, height = 5, units = "in", dpi = 500)
+dat3 %>%
+  group_by(dataset, index) %>%
+  summarise(mean_da = mean(value)) -> sdt_da
+sdt_da
+
+sdt_da %>%
+  group_by(index) %>%
+  summarise(ave_mean_da = mean(mean_da),
+            std_mean_da = sd(mean_da))
+
+ggsave("figure_3.jpg", g1, width = 6.5, height = 5, units = "in", dpi = 500)
+ggsave("figure_4.jpg", g2, width = 6.5, height = 5, units = "in", dpi = 500)
+ggsave("figure_5.jpg", g3, width = 6.5, height = 5, units = "in", dpi = 500)

@@ -194,3 +194,8 @@ ggplot(df_wide) +
         axis.title.y = element_blank(),
         axis.text.x  = element_text(size = 6),
         axis.text.y  = element_text(size = 6)) -> da_Dijkstra_2024_Expt2_1
+
+# exclusion
+length(unique(df$Subj_idx)) # 127
+sum(dp >= 0) # 124
+nrow(df_wide) # 123

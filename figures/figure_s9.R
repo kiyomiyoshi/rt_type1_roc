@@ -74,4 +74,4 @@ p2 <- ggplot(roc) +
 p2
 
 p <- cowplot::plot_grid(p1, p2)
-ggsave("figure_s7.jpg", p, width = 6, height = 2, units = "in", dpi = 500)
+ggsave("figure_s9.jpg", p, width = 6, height = 2, units = "in", dpi = 500)

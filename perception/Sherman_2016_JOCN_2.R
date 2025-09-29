@@ -194,3 +194,8 @@ ggplot(df_wide) +
         axis.title.y = element_blank(),
         axis.text.x  = element_text(size = 6),
         axis.text.y  = element_text(size = 6)) -> da_Sherman_2016_JOCN_2
+
+# exclusion
+length(unique(df$Subj_idx)) # 18
+sum(dp >= 0) # 18
+nrow(df_wide) # 17

@@ -82,5 +82,5 @@ p2 <- ggplot(meta_long, aes(x = var, y = value, fill = var)) +
   labs(x = NULL, y = "meta-d'", title = "Recognition memory")
 p2
 
-p <- cowplot::plot_grid(p1, p2)
-ggsave("figure_s8.jpg", p, width = 6, height = 2, units = "in", dpi = 500)
+# p <- cowplot::plot_grid(p1, p2)
+# ggsave("figure_s10.jpg", p, width = 6, height = 2, units = "in", dpi = 500)
