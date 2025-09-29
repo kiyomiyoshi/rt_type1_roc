@@ -16,7 +16,7 @@ fitting.
 (or highest-confidence) Yes to fastest-RT (or highest-confidence) No
 responses.  
 `add_constant = TRUE` adds a small value to the response frequency
-vectors primarily for estimation stability (default value is TRUE).
+vectors for estimation stability (default value is TRUE).
 
 ``` r
 nr_s1 <- c(20,  36, 16, 40, 82, 137)
@@ -34,6 +34,6 @@ f1
 ## Files
 
 `perception` folder includes data and code for the main manuscript,
-where `analysis_perception` implements all the analyses reported.  
+where `analysis_perception.R` implements all the analyses reported.  
 `memory` folder includes data and code for the supplementary material,
-where `analysis_memory` implements the relevant analyses.
+where `analysis_memory.R` implements the relevant analyses.
