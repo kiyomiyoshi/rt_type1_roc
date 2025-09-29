@@ -5,11 +5,11 @@
 
 This is the repository for the manuscript “Correcting for Unequal
 Variance in Signal Detection Models Using Response Time,” available at
-(<https://doi.org/10.31234/osf.io/cr9k6_v1>).
+<https://doi.org/10.31234/osf.io/cr9k6_v1>.
 
 ## Unequa-variance signal detection theory analysis
 
-The code `uvsdt.R` defines the function `fit_uvsdt_mle()` for model
+The code `uvsdt.r` defines the function `fit_uvsdt_mle()` for model
 fitting.  
 `nr_s1` and `nr_s2` are response frequency vectors for S1
 (target-absent) and S2 (target present) trials, ordered from fastest-RT
