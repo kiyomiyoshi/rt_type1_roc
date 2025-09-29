@@ -33,7 +33,7 @@ f1
 
 ## Files
 
-`perception` folder includes data and code for the main manuscript,
+The `perception` folder includes data and code for the main manuscript,
 where `analysis_perception.R` implements all the analyses reported.  
-`memory` folder includes data and code for the supplementary material,
-where `analysis_memory.R` implements the relevant analyses.
+The `memory` folder includes data and code for the supplementary
+material, where `analysis_memory.R` implements the relevant analyses.
