@@ -1,0 +1,40 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# RT Type-1 ROC
+
+This is the repository for the manuscript “Correcting for Unequal
+Variance in Signal Detection Models Using Response Time,” available at
+(<https://doi.org/10.31234/osf.io/cr9k6_v1>).
+
+## Unequa-variance signal detection theory analysis
+
+The R script `uvsdt.R` includes the function `fit_uvsdt_mle()` for the
+model fitting.  
+`nr_s1` and `nr_s2` are response frequency vectors for S1
+(target-absent) and S2 (target present) trials, ordered from fastest-RT
+(or highest-confidence) Yes to fastest-RT (or highest-confidence) No
+responses.  
+`add_constant = TRUE` adds a small value to the response frequency
+vectors primarily for avoiding zero-cell-related issues (default value
+is TRUE).
+
+``` r
+nr_s1 <- c(200,  360, 160, 400, 820, 1370)
+nr_s2 <- c(1970, 420, 120, 170, 300, 320)
+
+source("uvsdt.R")
+f1 <- fit_uvsdt_mle(nr_s1, nr_s2, add_constant = TRUE)
+f1
+#>         mu    sigma       da     cri.X1   cri.X2    cri.X3    cri.X4   cri.X5
+#> 1 1.959367 1.688484 1.412034 -0.2203341 0.429552 0.7718928 0.9545693 1.546958
+#>        logL
+#> 1 -9300.643
+```
+
+## Files
+
+`perception` folder includes data and code for the main manuscript,
+where `analysis_perception` implements all the analyses reported.  
+`memory` folder includes data and code for the supplementary material,
+where `analysis_memory` implements the relevant analyses.

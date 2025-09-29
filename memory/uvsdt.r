@@ -6,7 +6,7 @@
 
 
 #'# Function for model fitting
-fit_uvsdt_mle <- function(nr_s1, nr_s2, add_constant = FALSE) {
+fit_uvsdt_mle <- function(nr_s1, nr_s2, add_constant = TRUE) {
   
   # correction against extreme estimates 
   if (add_constant) {
