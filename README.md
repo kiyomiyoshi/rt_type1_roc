@@ -7,7 +7,7 @@ This is the repository for the manuscript “Correcting for Unequal
 Variance in Signal Detection Models Using Response Time,” available at
 <https://doi.org/10.31234/osf.io/cr9k6_v1>.
 
-## Unequa-variance signal detection theory analysis
+## Unequal-variance signal detection theory analysis
 
 The code `uvsdt.R` defines the function `fit_uvsdt_mle()` for model
 fitting.  
