@@ -63,7 +63,7 @@ hr <- c(0, as.vector(pnorm((dp - criteria), 0, 1)), 1)
 ev_roc <- as.data.frame(cbind(hr, far))
 ev_roc$index <- "EV"
 roc <- rbind(uv_rocr, uv_rocc, ev_roc)
-roc$index <- factor(roc$index, levels = c("Conf", "RT", "EV"))
+roc$index <- factor(roc$index, levels = c("RT", "Conf", "EV"))
 
 p2 <- ggplot(roc) + 
   geom_line(aes(x = far, y = hr, color = index)) +
