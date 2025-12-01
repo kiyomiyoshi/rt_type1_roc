@@ -56,31 +56,31 @@ df <- tibble(
   pivot_longer(cols = starts_with("density"),
                names_to = "distribution", values_to = "density")
 
-color_1 <- "#E41A1C"
-color_2 <- "#377EB8"
+color_1 <- "red" # "#E41A1C"
+color_2 <- "blue" # "#377EB8"
 
 y1_peak <- dnorm(0, mean = 0, sd = 1)
 y2_peak <- dnorm(mu, mean = mu, sd = sigma)
 
 ggplot(df, aes(x = x, y = density, color = distribution)) +
-  geom_line(size = 0.5) +
-  geom_segment(aes(x = 0, xend = 0 + 1, y = y1_peak * 0.6, yend = y1_peak * 0.6),
-               arrow = arrow(ends = "both", length = unit(0.1, "cm")),
-               color = color_1, inherit.aes = FALSE, size = 0.3) +
-  annotate("text", x = 0.5, y = y1_peak * 0.6 + 0.02, label = "1", size = 3, color = color_1) +
-  geom_segment(aes(x = mu, xend = mu + sigma, y = y2_peak * 0.6, yend = y2_peak * 0.6),
-               arrow = arrow(ends = "both", length = unit(0.1, "cm")),
-               color = color_2, inherit.aes = FALSE, size = 0.3) +
-  annotate("text", x = mu + sigma / 2, y = y2_peak * 0.6 + 0.02, label = "σ", size = 3, color = color_2) +
+  geom_line(size = 0.5, alpha = 0.7) +
+  annotate("segment", x = 0, xend = 0 + 1, y = y1_peak * 0.6, yend = y1_peak * 0.6,
+           arrow = arrow(ends = "both", length = unit(0.1, "cm")),
+           color = rgb(1, 0, 0, alpha = 0.7), size = 0.3) +
+  annotate("text", x = 0.5, y = y1_peak * 0.6 + 0.02, label = "1", size = 3, color = rgb(1, 0, 0, alpha = 0.7)) +
+  annotate("segment", x = mu, xend = mu + sigma, y = y2_peak * 0.6, yend = y2_peak * 0.6,
+           arrow = arrow(ends = "both", length = unit(0.1, "cm")),
+           color = rgb(0, 0, 1, alpha = 0.7), size = 0.3) +
+  annotate("text", x = mu + sigma / 2, y = y2_peak * 0.6 + 0.02, label = "σ", size = 3, color = rgb(0, 0, 1, alpha = 0.7)) +
   annotate("text",
            x = c(-0.2, mu - 0.2),
            y = c(y1_peak, y2_peak) + 0.03,
            label = c(0, "μ"),
            size = 3,
            hjust = 0,
-           color = c(color_1, color_2)) +
+           color = c(rgb(1, 0, 0, alpha = 0.7), rgb(0, 0, 1, alpha = 0.7))) +
   labs(x = NULL, y = "Density") +
-  scale_color_manual(values = c("density_1" = color_1, "density_2" = color_2)) +
+  scale_color_manual(values = c("density_1" = rgb(1, 0, 0, alpha = 0.7), "density_2" = rgb(0, 0, 1, alpha = 0.7))) +
   scale_x_continuous(breaks = seq(-4, 6, by = 2), limits = c(-5, 6)) +
   scale_y_continuous(breaks = seq(0, 0.5, by = 0.2)) +
   theme_minimal(base_size = 8) +
@@ -88,6 +88,7 @@ ggplot(df, aes(x = x, y = density, color = distribution)) +
     legend.position = "none",
     axis.text.x = element_text(size = 6),
     axis.text.y = element_text(size = 6)) -> p2
+
 p2
 
 #'# model roc

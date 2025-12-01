@@ -36,10 +36,10 @@ ev_hr2 <-  c(0, as.vector(pnorm((0.67 - cri1), 0, 1)), 1)
 ev_roc2 <- data.frame(phit = ev_hr2, pfa = ev_far2)
 
 p1 <- ggplot(roc_all, aes(x = pfa, y = phit, color = mu)) +
-  geom_line(size = 0.8) +
-  geom_point(data = points_all, aes(x = pfa, y = phit, color = mu), size = 1.8) +
   geom_line(ev_roc1, mapping = aes(x = pfa, y = phit), color = "gray", linetype = "dashed") +
   geom_line(ev_roc2, mapping = aes(x = pfa, y = phit), color = "gray", linetype = "dashed") +
+  geom_line(size = 0.8) +
+  geom_point(data = points_all, aes(x = pfa, y = phit, color = mu), size = 1.8) +
   geom_text(data = points_all,
             aes(x = pfa, y = phit, label = label, color = mu),
             hjust = -0.32,
@@ -66,4 +66,4 @@ p1 <- ggplot(roc_all, aes(x = pfa, y = phit, color = mu)) +
   ) 
 p1
 
-ggsave("figure_s1.jpg", p1, width = 4, height = 4, units = "in", dpi = 500)
+ggsave("figure_2.jpg", p1, width = 4, height = 4, units = "in", dpi = 500)
