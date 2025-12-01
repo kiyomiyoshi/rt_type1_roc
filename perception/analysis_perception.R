@@ -6,6 +6,9 @@ library(gridExtra)
 library(sjPlot)
 library(ggpubr)
 library(scales)
+library(car)
+library(ggeffects)
+library(broom)
 
 script <- c("Dijkstra_2024_Expt1_1.R",
             "Dijkstra_2024_Expt1_2.R",
@@ -49,8 +52,8 @@ for (j in 1:length(script)) {
 
 sdt_conf$var <- "Confidence"
 sdt_rt$var <- "RT"
-colnames(sdt_conf) <- c("mu", "sigma", "da", "logL", "id", "dp", "dataset", "var")
-colnames(sdt_rt) <-   c("mu", "sigma", "da", "logL", "id", "dp", "dataset", "var")
+colnames(sdt_conf) <- c("mu", "sigma", "da", "logL", "id", "dp", "cri", "dataset", "var")
+colnames(sdt_rt) <-   c("mu", "sigma", "da", "logL", "id", "dp", "cri", "dataset", "var")
 sdt <- rbind(sdt_conf, sdt_rt)
 sdt$var <- factor(sdt$var, levels = c("RT", "Confidence"))
 sdt <- subset(sdt, sdt$dp > 0)
@@ -381,3 +384,53 @@ sdt_da %>%
 ggsave("figure_3.jpg", g1, width = 6.5, height = 5, units = "in", dpi = 500)
 ggsave("figure_4.jpg", g2, width = 6.5, height = 5, units = "in", dpi = 500)
 ggsave("figure_5.jpg", g3, width = 6.5, height = 5, units = "in", dpi = 500)
+
+# criterion vs performance overestimation
+# pooled data
+wide <- wide[, !(names(wide) %in% c("dp...12", "cri...13"))]
+colnames(wide) <- c("mu_conf", "sigma_conf", "da_conf", "logL_conf", "dp", "cri",
+                    "mu_rt",   "sigma_rt",   "da_rt",   "logL_rt",   "id", "data")
+wide <- mutate(wide, bias_conf = dp - da_conf,
+                     bias_rt   = dp - da_rt)
+
+f1 <- lm(bias_conf ~ dp * cri, data = wide)
+summary(f1)
+anova(f1)
+pred <- ggpredict(f1, terms = c("cri", "dp"))
+plot(pred)
+
+
+# confidence 
+sdt <- mutate(sdt, bias = dp - da)
+ggplot(sdt, aes(x = cri, y = bias, color = var)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = F, color = "black") +
+  facet_wrap(~var + dataset, nrow = 2) +
+  coord_cartesian(xlim = c(-1, 2)) +
+  coord_cartesian(ylim = c(-1, 2)) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  labs(x = NULL,
+       y = "Bias (dp - da)")
+
+result <- sdt %>%
+  group_by(dataset, var) %>%
+  summarise(
+    cor_result = list(cor.test(cri, bias)),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    correlation = map_dbl(cor_result, ~ .x$estimate),
+    p_value     = map_dbl(cor_result, ~ .x$p.value),
+    method      = map_chr(cor_result, ~ .x$method)
+  ) %>%
+  select(dataset, var, correlation, p_value)
+
+print(result, n = 9999)
+
+result %>%
+  group_by(var) %>%
+  summarise(
+    n_significant = sum(p_value < .05),
+    mean_cor = mean(correlation),
+    sd_cor   = sd(correlation))

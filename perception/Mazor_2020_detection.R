@@ -14,6 +14,7 @@ df %>%
 uvsdt_conf <- c()
 meta_conf <- c()
 dp <- c()
+cri <- c()
 roc_conf <- c()
 for (i in unique(df$Subj_idx)) {
   
@@ -62,6 +63,7 @@ for (i in unique(df$Subj_idx)) {
   zh <- qnorm(sum(nr_s2[1:(length(nr_s2)/2)]) / sum(nr_s2))
   zf <- qnorm(sum(nr_s1[1:(length(nr_s1)/2)]) / sum(nr_s1))
   dp <- c(dp, zh - zf)
+  cri <- c(cri, -0.5*(zh + zf))
   result_vec <- as.numeric(unlist(result))
   uvsdt_conf <- rbind(uvsdt_conf, c(result_vec, i))
   result2_vec <- as.numeric(unlist(result2))
@@ -132,12 +134,12 @@ for (i in unique(df$Subj_idx)) {
 
 
 #'# visualization
-uvsdt_conf <- cbind(uvsdt_conf, dp)
-uvsdt_rt <- cbind(uvsdt_rt, dp)
-uvsdt_conf <- na.omit(as.data.frame(uvsdt_conf[, c(1:3, (ncol(uvsdt_conf) - 2):ncol(uvsdt_conf))]))
-uvsdt_rt <-   na.omit(as.data.frame(uvsdt_rt[, c(1:3, (ncol(uvsdt_rt) - 2):ncol(uvsdt_rt))]))
-colnames(uvsdt_conf) <- c("mu_conf", "sigma_conf", "da_conf", "logL_conf", "id", "dp")
-colnames(uvsdt_rt) <-   c("mu_rt",   "sigma_rt",   "da_rt",   "logL_rt",   "id", "dp")
+uvsdt_conf <- cbind(uvsdt_conf, dp, cri)
+uvsdt_rt <- cbind(uvsdt_rt, dp, cri)
+uvsdt_conf <- na.omit(as.data.frame(uvsdt_conf[, c(1:3, (ncol(uvsdt_conf) - 3):ncol(uvsdt_conf))]))
+uvsdt_rt <-   na.omit(as.data.frame(uvsdt_rt[, c(1:3, (ncol(uvsdt_rt) - 3):ncol(uvsdt_rt))]))
+colnames(uvsdt_conf) <- c("mu_conf", "sigma_conf", "da_conf", "logL_conf", "id", "dp", "cri")
+colnames(uvsdt_rt) <-   c("mu_rt",   "sigma_rt",   "da_rt",   "logL_rt",   "id", "dp", "cri")
 
 # wide format
 common_ids <- intersect(uvsdt_conf$id, uvsdt_rt$id)
