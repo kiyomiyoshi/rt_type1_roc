@@ -32,7 +32,7 @@ f1
 ```
 
 <p align="center">
-<img src="figures/figure.jpg" width="60%"><br> <strong>Figure 1</strong>
+<img src="figures/figure.jpg" width="70%"><br> <strong>Figure 1</strong>
 </p>
 
 ## RT-based type-1 ROC construction
