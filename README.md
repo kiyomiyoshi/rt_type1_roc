@@ -14,7 +14,7 @@ fitting.
 `nr_s1` and `nr_s2` are response frequency vectors for S1
 (target-absent) and S2 (target present) trials, ordered from fastest-RT
 (or highest-confidence) Yes to fastest-RT (or highest-confidence) No
-responses (see Figure (b) below).  
+responses (see Figure 2b below).  
 `add_constant = TRUE` adds a small value to the response frequency
 vectors for estimation stability (default value is TRUE).
 
@@ -31,27 +31,38 @@ f1
 #> 1 -315.8781
 ```
 
+<figure style="text-align: center; margin: 0;">
+<img src="figures/figure.jpg" width="60%" alt="Figure 1" style="display: block; margin: 0 auto;">
+<figcaption style="margin-top: 4px; font-size: 18px; font-weight: bold;">
+Figure 1
+</figcaption>
+</figure>
+
 ## RT-based type-1 ROC construction
 
 Our approach for constructing type-1 ROC based on RT is explained using
 a three-level RT bin example. First, RTs are divided into three
 equal-sized bins, with stimulus class (absent/present) and response
-(yes/no) collapsed. Figure (a) below illustrates this process, where
+(yes/no) collapsed. Figure 2a illustrates this process, where
 t<sub>1</sub> and t<sub>2</sub> represent the cutoff thresholds defining
 the RT tertiles, and b1, b2, and b3 correspond to the fastest,
 second-fastest, and slowest RT bins, respectively. Trials for each
 stimulus class are thus characterized by an assigned response (yes/no)
 and an RT bin (three levels), classified in six response categories.
-Figure (b) shows the response frequency of these categories, arranged
+Figure 2b shows the response frequency of these categories, arranged
 from left to right to indicate decreasing support for “yes” judgment
 (e.g., “no” responses in the fastest RT bin represent the weakest
-indication of “yes” judgment). In Figure (c), cumulative response
+indication of “yes” judgment). In Figure 2c, cumulative response
 proportions are calculated for each stimulus class sequentially from
-left to right, which correspond to hit and FA rates in type-1 ROC space.
+left to right, which correspond to hit and FA rates in type-1 ROC space
+(see Figure 1a).
 
-<p align="center">
-<img src="perception/figure_s1.jpg" width="100%">
-</p>
+<figure style="text-align: center; margin: 0;">
+<img src="perception/figure_s1.jpg" width="100%" alt="Figure 2" style="display: block; margin: 0 auto;">
+<figcaption style="margin-top: 4px; font-size: 18px; font-weight: bold;">
+Figure 2
+</figcaption>
+</figure>
 
 ## Files
 
