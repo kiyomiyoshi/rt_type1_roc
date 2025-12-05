@@ -31,12 +31,9 @@ f1
 #> 1 -315.8781
 ```
 
-<figure style="text-align: center; margin: 0;">
-<img src="figures/figure.jpg" width="60%" alt="Figure 1" style="display: block; margin: 0 auto;">
-<figcaption style="margin-top: 4px; font-size: 18px; font-weight: bold;">
-Figure 1
-</figcaption>
-</figure>
+<p align="center">
+<img src="figures/figure.jpg" width="60%"><br> <strong>Figure 1</strong>
+</p>
 
 ## RT-based type-1 ROC construction
 
@@ -57,12 +54,10 @@ proportions are calculated for each stimulus class sequentially from
 left to right, which correspond to hit and FA rates in type-1 ROC space
 (see Figure 1a).
 
-<figure style="text-align: center; margin: 0;">
-<img src="perception/figure_s1.jpg" width="100%" alt="Figure 2" style="display: block; margin: 0 auto;">
-<figcaption style="margin-top: 4px; font-size: 18px; font-weight: bold;">
-Figure 2
-</figcaption>
-</figure>
+<p align="center">
+<img src="perception/figure_s1.jpg" width="100%"><br> <strong>Figure
+2</strong>
+</p>
 
 ## Files
 
