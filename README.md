@@ -55,7 +55,7 @@ left to right, which correspond to hit and FA rates in type-1 ROC space
 (see Figure 1a).
 
 <p align="center">
-<img src="perception/figure_s1.jpg" width="100%"><br> <strong>Figure
+<img src="figures/figure_s1.jpg" width="100%"><br> <strong>Figure
 2</strong>
 </p>
 
