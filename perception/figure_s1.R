@@ -52,11 +52,11 @@ desired_order <- c("yes, b1","yes, b2","yes, b3",
 d$grp <- factor(d$grp, levels = desired_order)
 
 ggplot(d, aes(x = grp, fill = Stimulus)) +
-  geom_bar(position = "dodge", alpha = 07) +
+  geom_bar(position = "dodge", alpha = 0.7) +
+  scale_fill_manual(values = c("red", "blue")) +
   ylab("Frequency") +
   xlab(NULL) +
   labs(fill = NULL) +
-  scale_fill_manual(values = c("red", "blue")) +
   theme_minimal(base_size = 10) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1, size = 8.5, color = "black"),
