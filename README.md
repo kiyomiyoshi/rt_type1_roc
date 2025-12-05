@@ -47,8 +47,7 @@ from left to right to indicate decreasing support for “yes” judgment
 (e.g., “no” responses in the fastest RT bin represent the weakest
 indication of “yes” judgment). In Figure (c), cumulative response
 proportions are calculated for each stimulus class sequentially from
-left to right, which corresponds to hit and FA rates in type-1 ROC
-space.
+left to right, which correspond to hit and FA rates in type-1 ROC space.
 
 <p align="center">
 <img src="perception/figure_s1.jpg" width="100%">
