@@ -7,16 +7,6 @@ library(sjPlot)
 #'#
 df <- fread("data_Mazor_2020.csv", header = T) # sub 46, ava 39
 df <- subset(df, df$Condition == "Detection") # 200 trials / sub
-df %>%
-  group_by(Subj_idx) %>%
-  summarise(n = n()) %>%
-  print(n = 99999)
-
-
-#'# RT
-uvsdt_rt <- c()
-meta_rt <- c()
-roc_rt <- c()
 
 i = 1
 d <- subset(df, df$Subj_idx == i)
@@ -36,25 +26,11 @@ nr_s2 <- c(sum(d$Stimulus == "1" & d$Response == "1" & d$RT_bin == 1, na.rm = TR
            sum(d$Stimulus == "1" & d$Response == "0" & d$RT_bin == 2, na.rm = TRUE),
            sum(d$Stimulus == "1" & d$Response == "0" & d$RT_bin == 1, na.rm = TRUE))
 
-result <- tryCatch({
-  fit_uvsdt_mle(nr_s1, nr_s2, add_constant = TRUE)
-}, error = function(e) {
-  return(NA)
-})
-
-result2 <- tryCatch({
-  fit_meta_d_bal(nr_s2, nr_s1, add_constant = TRUE)
-}, error = function(e) {
-  return(NA)
-})
-
-result_vec <- as.numeric(unlist(result))
-uvsdt_rt <- rbind(uvsdt_rt, c(result_vec, i))
-result2_vec <- as.numeric(unlist(result2))
-meta_rt <- rbind(meta_rt, c(result2_vec, i))
+uvsdt <- fit_uvsdt_mle(nr_s1, nr_s2, add_constant = TRUE)
+uvsdt
 roc <- cbind(c(0, cumsum(nr_s1) / sum(nr_s1)), c(0, cumsum(nr_s2) / sum(nr_s2)))
-roc <- cbind(roc, rep(i, length(nr_s1) + 1))
-roc_rt <- rbind(roc_rt, roc)  
+roc 
+  
   
 #'#
 d <- na.omit(d)
