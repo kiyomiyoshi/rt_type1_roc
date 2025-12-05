@@ -76,7 +76,7 @@ desired_order <- c("yes, b1","yes, b2","yes, b3",
 d$grp <- factor(d$grp, levels = desired_order)
 
 ggplot(d, aes(x = grp, fill = Stimulus)) +
-  geom_bar(position = "dodge", alpha = 0.7) +
+  geom_bar(position = "dodge", alpha = 07) +
   ylab("Frequency") +
   xlab(NULL) +
   labs(fill = NULL) +

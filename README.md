@@ -36,21 +36,21 @@ f1
 Our approach for constructing type-1 ROC based on RT is explained using
 a three-level RT bin example. First, RTs are divided into three
 equal-sized bins, with stimulus class (absent/present) and response
-(yes/no) collapsed. Figure a below illustrates this process, where t1
+(yes/no) collapsed. Figure (a) below illustrates this process, where t1
 and t2 represent the cutoff thresholds defining the RT tertiles, and b1,
 b2, and b3 correspond to the fastest, second-fastest, and slowest RT
 bins, respectively. Trials for each stimulus class are thus
 characterized by an assigned response (yes/no) and an RT bin (three
-levels), classified in six response categories. Figure b shows the
+levels), classified in six response categories. Figure (b) shows the
 response frequency of these categories, arranged from left to right to
 indicate decreasing support for “yes” judgment (e.g., “no” responses in
 the fastest RT bin represent the weakest indication of “yes” judgment).
-For each stimulus class, cumulative response proportions are calculated
-sequentially from left to right, which corresponds to hit and FA rates
-in type-1 ROC space (Figure c).
+In Figure (c), cumulative response proportions are calculated for each
+stimulus class sequentially from left to right, which corresponds to hit
+and FA rates in type-1 ROC space.
 
 <p align="center">
-<img src="figures/figure_2.jpg" width="40%">
+<img src="perception/figure_s1.jpg" width="100%">
 </p>
 
 ## Files
