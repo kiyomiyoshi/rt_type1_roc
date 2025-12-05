@@ -173,7 +173,7 @@ p1 <- p1 + theme(plot.margin = margin(5, 5, 5, 5))
 p2 <- p2 + theme(plot.margin = margin(5, 5, 5, 5))
 p3 <- p3 + theme(plot.margin = margin(5, 5, 5, 5))
 
-figure_2 <- cowplot::plot_grid(
+figure_3 <- cowplot::plot_grid(
   p1, p2, p3,
   nrow = 1,
   labels = c("(a)", "(b)", "(c)"),
@@ -183,7 +183,7 @@ figure_2 <- cowplot::plot_grid(
   label_y = c(0.98, 0.98, 0.98)
 )
 
-sjPlot::save_plot("figure_2.png", figure_2, width = 16, height = 4, dpi = 300)
+sjPlot::save_plot("figure_3.png", figure_3, width = 16, height = 4, dpi = 300)
 
 # stats
 # sigma
@@ -246,9 +246,9 @@ da <- ggdraw() +
   draw_label(expression("Confidence-based d"[a]), x = 0.5, y = 0.03, vjust = 0.5, size = 10)
 
 # save figure
-sjPlot::save_plot("figure_6.png", sigma, width = 16, height = 13.6, dpi = 500)
-sjPlot::save_plot("figure_7.png", mu,    width = 16, height = 13.6, dpi = 500)
-sjPlot::save_plot("figure_8.png", da,    width = 16, height = 13.6, dpi = 500)
+sjPlot::save_plot("figure_7.png", sigma, width = 16, height = 13.6, dpi = 500)
+sjPlot::save_plot("figure_8.png", mu,    width = 16, height = 13.6, dpi = 500)
+sjPlot::save_plot("figure_9.png", da,    width = 16, height = 13.6, dpi = 500)
 
 #
 sdt$dataset <- as.factor(sdt$dataset)
@@ -381,9 +381,9 @@ sdt_da %>%
   summarise(ave_mean_da = mean(mean_da),
             std_mean_da = sd(mean_da))
 
-ggsave("figure_3.jpg", g1, width = 6.5, height = 5, units = "in", dpi = 500)
-ggsave("figure_4.jpg", g2, width = 6.5, height = 5, units = "in", dpi = 500)
-ggsave("figure_5.jpg", g3, width = 6.5, height = 5, units = "in", dpi = 500)
+ggsave("figure_4.jpg", g1, width = 6.5, height = 5, units = "in", dpi = 500)
+ggsave("figure_5.jpg", g2, width = 6.5, height = 5, units = "in", dpi = 500)
+ggsave("figure_6.jpg", g3, width = 6.5, height = 5, units = "in", dpi = 500)
 
 # criterion vs performance overestimation
 # pooled data
