@@ -49,10 +49,9 @@ For each stimulus class, cumulative response proportions are calculated
 sequentially from left to right, which corresponds to hit and FA rates
 in type-1 ROC space (Figure c).
 
-<figure>
-<img src="main/figures/figure_2.jpg" alt="Figure_2" />
-<figcaption aria-hidden="true">Figure_2</figcaption>
-</figure>
+<p align="center">
+<img src="figures/figure_2.jpg" width="40%">
+</p>
 
 ## Files
 
