@@ -381,9 +381,9 @@ sdt_da %>%
   summarise(ave_mean_da = mean(mean_da),
             std_mean_da = sd(mean_da))
 
-ggsave("figure_4.jpg", g1, width = 6.5, height = 5, units = "in", dpi = 500)
-ggsave("figure_5.jpg", g2, width = 6.5, height = 5, units = "in", dpi = 500)
-ggsave("figure_6.jpg", g3, width = 6.5, height = 5, units = "in", dpi = 500)
+ggsave("figure_4.png", g1, width = 6.5, height = 5, units = "in", dpi = 500)
+ggsave("figure_5.png", g2, width = 6.5, height = 5, units = "in", dpi = 500)
+ggsave("figure_6.png", g3, width = 6.5, height = 5, units = "in", dpi = 500)
 
 # criterion vs performance overestimation
 # pooled data
