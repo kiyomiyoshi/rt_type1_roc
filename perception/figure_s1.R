@@ -3,6 +3,7 @@ library(data.table)
 library(grid)
 library(cowplot)
 library(sjPlot)
+source("uvsdt.R")
 
 #'#
 df <- fread("data_Mazor_2020.csv", header = T) # sub 46, ava 39
