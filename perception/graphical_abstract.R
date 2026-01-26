@@ -67,8 +67,8 @@ ggplot(d) +
     labels = c("target present", "target absent"),
     name = NULL,
     guide = guide_legend(
-      keywidth = unit(0.8, "lines"),
-      keyheight = unit(0.8, "lines"))) +
+      keywidth = unit(0.7, "lines"),
+      keyheight = unit(0.7, "lines"))) +
   theme_minimal(base_size = 9.5) +
   xlab("Empirical response time") +
   ylab("Frequency") +
@@ -79,9 +79,8 @@ ggplot(d) +
     axis.ticks.y = element_blank(),
     panel.grid = element_blank(),
     axis.title = element_text(color = "black", size = 11, face = "bold"),
-    legend.title = element_text(size = 8, face = "bold"),
     legend.text = element_text(size = 9, face = "bold"),
-    legend.position = c(0.85, 0.86),
+    legend.position = c(0.84, 0.88),
     strip.text = element_text(size = 11, face = "bold")) + 
   theme(
     panel.border = element_rect(color = "darkgrey", fill = NA, size = 1),
