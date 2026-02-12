@@ -5,7 +5,7 @@
 
 This is the repository for the manuscript “Correcting for Unequal
 Variance in Signal Detection Models Using Response Time,” available at
-<https://doi.org/10.31234/osf.io/cr9k6_v1>.
+<https://www.cell.com/iscience/fulltext/S2589-0042(26)00373-1>.
 
 ## Unequal-variance signal detection theory analysis
 
