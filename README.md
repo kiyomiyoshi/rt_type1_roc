@@ -12,7 +12,7 @@ Variance in Signal Detection Models Using Response Time,” available at
 The code `uvsdt.R` defines the function `fit_uvsdt_mle()` for model
 fitting.  
 `nr_s1` and `nr_s2` are response frequency vectors for S1
-(target-absent) and S2 (target present) trials, ordered from fastest-RT
+(target-absent) and S2 (target-present) trials, ordered from fastest-RT
 (or highest-confidence) Yes to fastest-RT (or highest-confidence) No
 responses (see Figure 2b below).  
 `add_constant = TRUE` adds a small value to the response frequency
