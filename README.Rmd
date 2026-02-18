@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # RT Type-1 ROC
 This is the repository for the manuscript "Correcting for Unequal Variance in Signal Detection Models Using Response Time," 
-available at https://doi.org/10.31234/osf.io/cr9k6_v1.
+available at https://www.cell.com/iscience/fulltext/S2589-0042(26)00373-1.
 
 ## Unequal-variance signal detection theory analysis
 The code `uvsdt.R` defines the function `fit_uvsdt_mle()` for model fitting.  
