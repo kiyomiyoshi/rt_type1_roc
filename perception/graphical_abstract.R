@@ -116,15 +116,6 @@ df <- tibble(
   pivot_longer(cols = starts_with("density"),
                names_to = "distribution", values_to = "density")
 
-x_vals <- seq(-4, 6, length.out = 1000)
-df <- tibble(
-  x = x_vals,
-  density_1 = dnorm(x_vals, mean = 0, sd = 1),
-  density_2 = dnorm(x_vals, mean = mu, sd = sigma)
-) %>%
-  pivot_longer(cols = starts_with("density"),
-               names_to = "distribution", values_to = "density")
-
 y1_peak <- dnorm(0, mean = 0, sd = 1)
 y2_peak <- dnorm(mu, mean = mu, sd = sigma)
 
