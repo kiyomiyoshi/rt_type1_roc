@@ -3,9 +3,11 @@
 
 # RT Type-1 ROC
 
-This is the repository for the manuscript “Correcting for Unequal
-Variance in Signal Detection Models Using Response Time,” available at
-<https://doi.org/10.31234/osf.io/cr9k6_v1>.
+This repository provides the `R` implementation of the analyses
+presented in “Correcting for Unequal Variance in Signal Detection Models
+Using Response Time,” available at
+<https://doi.org/10.1016/j.isci.2026.114998>.  
+For a `Python` implementation, see <https://github.com/trevcaru/rt-da>.
 
 ## Unequal-variance signal detection theory analysis
 
