@@ -41,7 +41,7 @@ f1
 
 Our approach for constructing type-1 ROC based on RT is explained using
 a three-level RT bin example. First, RTs are divided into three
-equal-sized bins, with stimulus class (absent/present) and response
+equal-sized bins, with stimulus class (present/absent) and response
 (yes/no) collapsed. Figure 2a illustrates this process, where
 t<sub>1</sub> and t<sub>2</sub> represent the cutoff thresholds defining
 the RT tertiles, and b1, b2, and b3 correspond to the fastest,
